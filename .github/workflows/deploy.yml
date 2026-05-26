@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -17,5 +23,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v5
         with:
           branch: gh-pages
-          folder: .
+          folder: ./
           token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
